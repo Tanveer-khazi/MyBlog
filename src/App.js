@@ -1,25 +1,26 @@
-import logo from './logo.svg';
+
 import './App.css';
+import {Box} from '@material-ui/core'
+
+import Header from './components/Header'
+import Home from './components/home/Home';
+import DetailView from './components/Posts/DetailView';
+
+import {BrowserRouter, Switch, Route} from 'react-router-dom'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Header/>
+      <Box style={{marginTop:64}}>
+        <Switch>
+          <Route exact path='/' component= {Home} />
+          <Route exact path='/details' component={DetailView}/>
+        </Switch>
+      </Box>
+    </BrowserRouter>
   );
 }
 
 export default App;
+
